@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="learningApp">
+
+<head>
+    <script src="lib/angular.min.js.map"></script>
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular.js"></script>
+    <script src="learningApp.js"></script>
+    <script src="game.js"></script>
+    <script src="key-press-handler.js"></script>
+    <script src="global-settings.js"></script>
+    <script src="player.js"></script>
+</head>
+
+<body ng-controller="AppController as app" ng-keydown="app.keyDown($event)">
+
+    $event.keyCode={{app.keyChode}}
+    <table class="app.board">
+        <tr ng-repeat="row in app.board.rows">
+            <td ng-repeat="square in row.squares">
+                <img ng-if="square.isCovered" src="img/covered.png" />
+                <img ng-if="!square.isCovered && square.content == 'empty'" src="img/poop.jpg" />
+                <img ng-if="square.content == 'player'" src="img/fighter.jpg" />
+            </td>
+        </tr>
+    </table>
+
+</body>
